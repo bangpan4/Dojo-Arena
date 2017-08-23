@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Dojo Arena</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="style.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('button').hover(function(){
+                    var name = $(this).text();
+                    var pic = "url('"+name+".jpg')";
+                    $('.container').css('background-image', pic);
+                },
+                    function(){
+                        $('.container').css('background-image', "");
+                    }             
+                
+                );
+
+                $('button').click(function(){
+                    $('button').off("mouseenter mouseleave");
+                    var name = $(this).text();
+                    var pic = "url('"+name+".jpg')";
+                    console.log(pic);
+                    $('.container').css('background-image', pic);
+                    $('#arena').hide();
+                    $('#players').show();
+                });
+
+                $('#player1').change(function(){
+                    var selected1 ="";
+                    $('#player1 option:selected').each(function(){
+                        selected1  = $(this).text();
+                        $('#left').attr('src',selected1+".png");
+                    })
+                })
+
+                $('#player2').change(function(){
+                    var selected2 ="";
+                    $('#player2 option:selected').each(function(){
+                        selected2  = $(this).text();
+                        $('#right').attr('src',selected2+".png");
+                    })
+                })
+                
+            });
+
+        </script>
+
+    </head>
+    <body>
+        <div class="container">
+            <div id="arena" class="select">
+                <p>Select Arean</p>
+                <button>beach</button>
+                <button>planet</button>
+                <button>dojo</button>
+                <button>forest</button>
+                <button>matrix</button>
+                <button>snow</button>
+            </div>
+
+            <div id="players" class="select">
+                <p>Select Players</p>
+                <select id="player1">
+                    <option>Select Ninja</option>
+                    <option>donny</option>
+                    <option>leo</option>
+                    <option>mikey</option>
+                    <option>raphael</option>                    
+                </select>
+                <select id="player2">
+                    <option>Select Ninja</option>
+                    <option>donny</option>
+                    <option>leo</option>
+                    <option>mikey</option>
+                    <option>raphael</option>                    
+                </select>                
+            </div>
+            <img id="left" src="" alt="">
+            <img id="right" src="" alt="">            
+        </div>
+    
+    </body>
+</html>
